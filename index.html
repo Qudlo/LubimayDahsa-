@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наша Викторина Любви 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .page {
+            display: none;
+            padding: 40px;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Стартовая страница */
+        #startPage h1 {
+            color: #764ba2;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        #startPage p {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .start-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: bold;
+        }
+
+        .start-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .start-button:active {
+            transform: scale(0.98);
+        }
+
+        /* Страница викторины */
+        #quizPage {
+            padding: 30px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+
+        #questionTitle {
+            color: #333;
+            font-size: 1.4em;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        #answersContainer {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .answer-option {
+            background: #f5f5f5;
+            border: 2px solid #ddd;
+            padding: 15px;
+            font-size: 1em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: left;
+        }
+
+        .answer-option:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .answer-option.selected {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            justify-content: space-between;
+        }
+
+        #prevBtn, #nextBtn {
+            flex: 1;
+            padding: 12px;
+            font-size: 1em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        #prevBtn {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        #prevBtn:hover {
+            background: #d0d0d0;
+        }
+
+        #nextBtn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        #nextBtn:hover {
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        #nextBtn:active {
+            transform: scale(0.98);
+        }
+
+        /* Финальная страница */
+        #finalPage {
+            padding: 30px;
+        }
+
+        #finalPhoto {
+            width: 100%;
+            max-width: 300px;
+            height: 300px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            object-fit: cover;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        #customMessage {
+            color: #333;
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .restart-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: bold;
+        }
+
+        .restart-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .restart-button:active {
+            transform: scale(0.98);
+        }
+
+        /* Адаптация для мобильных */
+        @media (max-width: 600px) {
+            .container {
+                border-radius: 15px;
+            }
+
+            .page {
+                padding: 25px;
+            }
+
+            #startPage h1 {
+                font-size: 2em;
+            }
+
+            #questionTitle {
+                font-size: 1.2em;
+            }
+
+            .answer-option {
+                padding: 12px;
+                font-size: 0.95em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Стартовая страница -->
+        <div id="startPage" class="page active">
+            <h1>💕 Наша Викторина 💕</h1>
+            <p>Давай проверим, как хорошо ты знаешь нашу историю любви!</p>
+            <p>Всего 6 вопросов о нас...</p>
+            <button class="start-button" onclick="startQuiz()">Начать! 🚀</button>
+        </div>
+
+        <!-- Страница викторины -->
+        <div id="quizPage" class="page">
+            <div class="progress-bar">
+                <div id="progressFill" class="progress-fill"></div>
+            </div>
+            <h2 id="questionTitle"></h2>
+            <div id="answersContainer"></div>
+            <div class="button-group">
+                <button id="prevBtn" onclick="previousQuestion()">← Назад</button>
+                <button id="nextBtn" onclick="nextQuestion()">Далее →</button>
+            </div>
+        </div>
+
+        <!-- Финальная страница -->
+        <div id="finalPage" class="page">
+            <img id="finalPhoto" src="" alt="Our Love Story">
+            <p id="customMessage"></p>
+            <button class="restart-button" onclick="restartQuiz()">Пройти ещё раз 🔄</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
