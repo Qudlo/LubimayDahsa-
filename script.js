@@ -56,7 +56,7 @@ function loadQuestion() {
     const progress = ((currentQuestion + 1) / questions.length) * 100;
     document.getElementById('progressFill').style.width = progress + '%';
     
-    // Обновляе�� текст вопроса
+    // Обновляем текст вопроса
     document.getElementById('questionTitle').textContent = question.question;
     
     // Генерируем кнопки ответов
@@ -125,13 +125,12 @@ function showFinalPage() {
     document.getElementById('quizPage').classList.remove('active');
     document.getElementById('finalPage').classList.add('active');
     
-    // Здесь вставьте ссылку на вашу фотографию
-    // ВАЖНО: Замените это на реальную ссылку на вашу совместную фотографию
-    const photoUrl = 'https://via.placeholder.com/400x400?text=Our+Love+Story'; // ЗАМЕНИТЕ НА ВАШУ ФОТО
+    // Ссылка на фотографию из репозитория
+    const photoUrl = 'https://raw.githubusercontent.com/Qudlo/LubimayDahsa-/main/IMG_20260108_145356_1.jpg';
     document.getElementById('finalPhoto').src = photoUrl;
     
     // Персональное сообщение о любви
-    const loveMessage = `Моя любимая! 💕\n\nТы ответила на ${score} из ${questions.length} вопросов правильно!\n\nТы - моя вселенная, мой смысл жизни, моё счастье.\nКаждый день с тобой - подарок.\nТы прекрасна, умна, добра и просто божественна.\nТвоя улыбка заставляет мое сердце биться быстрее.\nТвой смех - самый красивый звук в мире.\n\nЯ очень, очень сильно люблю тебя! ❤️\nТы моя невеста, моя любовь, моя жизнь.`;
+    const loveMessage = `Моя любимая! 💕\n\nТы ответила на ${score} из ${questions.length} вопросов правильно!\n\nТы - моя вселенная, моя радость и смысл жизни. Спасибо, что ты есть в моей жизни. Я люблю тебя всем своим сердцем! ❤️`;
     document.getElementById('customMessage').textContent = loveMessage;
 }
 
