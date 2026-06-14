@@ -140,7 +140,7 @@ function showFinalPage() {
     document.getElementById('finalPhoto').src = photoUrl;
     
     // Персональное сообщение о любви
-    const loveMessage = `Моя любимая! 💕\n\nТы ответила на ${score} из ${questions.length} вопросов правильно!\n\nТы - моя вселенная, моя р[...]
+    const loveMessage = `Моя любимая! 💕\n\nТы ответила на ${score} из ${questions.length} вопросов правильно!\n\nТы - моя вселенная, моя радость, моя любовь! 💜\n\nСпасибо, что ты есть в моей жизни!`;
     document.getElementById('customMessage').textContent = loveMessage;
 }
 
