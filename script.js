@@ -29,6 +29,11 @@ const questions = [
         question: "💍 Когда я сделал тебе предложение?",
         answers: ["07.01.2026", "08.01.2026", "09.01.2026", "10.01.2026"],
         correctAnswer: 1 // 08.01.2026
+    },
+    {
+        question: "📍 В какое место мы пошли на первое свидание?",
+        answers: ["Крестовский остров", "Ново-голандия", "Кофейня", "Набережная"],
+        correctAnswer: 1 // Ново-голандия
     }
 ];
 
@@ -130,7 +135,7 @@ function showFinalPage() {
     document.getElementById('finalPhoto').src = photoUrl;
     
     // Персональное сообщение о любви
-    const loveMessage = `Моя любимая! 💕\n\nТы ответила на ${score} из ${questions.length} вопросов правильно!\n\nТы - моя вселенная, моя радость и смысл жизни. Спасибо, что ты есть в моей жизни. Я люблю тебя всем своим сердцем! ❤️`;
+    const loveMessage = `Моя любимая! 💕\n\nТы ответила на ${score} из ${questions.length} вопросов правильно!\n\nТы - моя вселенная, моя р[...]
     document.getElementById('customMessage').textContent = loveMessage;
 }
 
